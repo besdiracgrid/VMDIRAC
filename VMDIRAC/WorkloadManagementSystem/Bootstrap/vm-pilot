@@ -104,6 +104,11 @@ if [ "$cvmfs_proxy" != 'DIRECT' ] && [ "$cvmfs_proxy" != 'None' ]; then
   export https_proxy=$hproxy
 fi
 
+REQUIRED_TAG_ARGS=''
+if [ $REQUIRED_TAG ]; then
+  REQUIRED_TAG_ARGS="-o /AgentJobRequirements/RequiredTag=$REQUIRED_TAG"
+fi
+
 # Run the Pilot 2.0 script
 python dirac-pilot.py \
  --debug \
@@ -123,7 +128,7 @@ python dirac-pilot.py \
  -o /Resources/Computing/CEDefaults/VirtualOrganization=$VO \
  -o /Resources/Computing/CEDefaults/NumberOfProcessors=$NUMBER_OF_PROCESSORS \
  -o /Resources/Computing/CEDefaults/WholeNode=$WHOLE_NODE \
- -o /AgentJobRequirements/RequiredTag=$REQUIRED_TAG \
+ $REQUIRED_TAG_ARGS \
  -o /LocalSite/OwnerGroup=$OWNER_GROUP \
  -o '/Systems/WorkloadManagement/Production/Agents/JobAgent/StopAfterFailedMatches=0' \
  -o '/Systems/WorkloadManagement/Production/Agents/JobAgent/CEType=Pool'
