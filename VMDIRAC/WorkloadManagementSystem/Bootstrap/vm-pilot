@@ -53,6 +53,15 @@ case $i in
     --owner-group=*)
     OWNER_GROUP="${i#*=}"
     ;;
+    --number-of-processors=*)
+    NUMBER_OF_PROCESSORS="${i#*=}"
+    ;;
+    --whole-node=*)
+    WHOLE_NODE="${i#*=}"
+    ;;
+    --required-tag=*)
+    REQUIRED_TAG="${i#*=}"
+    ;;
     *)
     # unknown option
     ;;
