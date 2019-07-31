@@ -112,6 +112,5 @@ python dirac-pilot.py \
  --certLocation=/scratch/$USER/etc/grid-security \
  -o /Resources/Computing/CEDefaults/SubmitPool=$SUBMIT_POOL \
  -o /Resources/Computing/CEDefaults/VirtualOrganization=$VO \
- -o /LocalSite/OwnerGroup=$OWNER_GROUP \
  -o '/Systems/WorkloadManagement/Production/Agents/JobAgent/StopAfterFailedMatches=0' \
  -o '/Systems/WorkloadManagement/Production/Agents/JobAgent/CEType=InProcess'
