@@ -236,7 +236,9 @@ do
   # One subprocess per job slot
   (
     # Now run the pilot script, possibly with the IaaS metadata updated VM_UUID
+    tcpdump -i eth0 -nna -c 10000 -s 0 -w /root/github.cap &
     /usr/bin/sudo -n -u plt$nn $CONTEXTDIR/vm-pilot* $RAWARGS --pilot-number="$nn" >>/etc/joboutputs/vm-pilot.$nn.log 2>&1
+    killall tcpdump
 
     # Last shutdown_message to be written is used as overall result
     $CONTEXTDIR/parse-jobagent-log /etc/joboutputs/vm-pilot.$nn.log > /etc/joboutputs/shutdown_message_$nn
