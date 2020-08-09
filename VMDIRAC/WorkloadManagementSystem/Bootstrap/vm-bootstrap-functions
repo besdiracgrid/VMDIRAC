@@ -124,6 +124,7 @@ vm_cvmfs_bootstrap_ihep() {
     curl -o /etc/cvmfs/keys/ihep.ac.cn/ihep.ac.cn.pub http://cvmfs-stratum-one.ihep.ac.cn/cvmfs/software/client_configure/ihep.ac.cn/ihep.ac.cn.pub
     curl -o /etc/cvmfs/domain.d/ihep.ac.cn.conf http://cvmfs-stratum-one.ihep.ac.cn/cvmfs/software/client_configure/ihep.ac.cn.conf
     curl -o /etc/cvmfs/domain.d/cern.ch.local http://cvmfs-stratum-one.ihep.ac.cn/cvmfs/software/client_configure/cern.ch.local
+    curl -o /etc/cvmfs/config.d/juno.ihep.ac.cn.conf http://cvmfs-stratum-one.ihep.ac.cn/cvmfs/software/client_configure/ihep.ac.cn/juno.ihep.ac.cn.conf
 
     if [ $1 != 'None' ]; then
       sed -i "s+CVMFS_HTTP_PROXY\s*=.*+CVMFS_HTTP_PROXY=\"$1\"+" /etc/cvmfs/default.local
