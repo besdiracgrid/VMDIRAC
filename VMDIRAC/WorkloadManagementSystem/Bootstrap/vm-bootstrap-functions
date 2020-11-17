@@ -118,6 +118,11 @@ vm_cvmfs_bootstrap_ihep() {
   # Bigger cvmfs cache, on the logical partition
   if [ -d /etc/cvmfs ]; then
     # configure new CVMFS
+    cvmfs_config setup
+    echo -e "CVMFS_REPOSITORIES=boss.cern.ch,bes.ihep.ac.cn,juno.ihep.ac.cn,dcomputing.ihep.ac.cn,cepc.ihep.ac.cn" >> /etc/cvmfs/default.local
+    echo -e "CVMFS_QUOTA_LIMIT=10240\nCVMFS_CACHE_BASE=/var/lib/cvmfs/" >> /etc/cvmfs/default.local
+    echo -e "CVMFS_HTTP_PROXY=DIRECT" >> /etc/cvmfs/default.local
+    
     rm -f /etc/cvmfs/config.d/*.ihep.ac.cn.conf
     rm -f /etc/cvmfs/keys/*.ihep.ac.cn.pub
     mkdir /etc/cvmfs/keys/ihep.ac.cn
@@ -169,7 +174,7 @@ vm_dirac_install() {
 
   mkdir -p /opt/dirac/etc/grid-security
   cp -f /root/hostkey.pem /opt/dirac/etc/grid-security/hostkey.pem
-  cp -f /root/hostkey.pem /opt/dirac/etc/grid-security/hostcert.pem
+  cp -f /root/hostcert.pem /opt/dirac/etc/grid-security/hostcert.pem
 
   dirac-configure -ddd -S $setup -C $config_server \
                   -o /DIRAC/Extensions=VMDIRAC \
