@@ -113,6 +113,7 @@ vm_cvmfs_bootstrap_ihep() {
   # Bigger cvmfs cache, on the logical partition
   if [ -d /etc/cvmfs ]; then
     # configure new CVMFS
+    cvmfs_config setup
     echo -e "CVMFS_REPOSITORIES=boss.cern.ch,bes.ihep.ac.cn,juno.ihep.ac.cn,dcomputing.ihep.ac.cn,cepc.ihep.ac.cn" >> /etc/cvmfs/default.local
     echo -e "CVMFS_QUOTA_LIMIT=10240\nCVMFS_CACHE_BASE=/var/lib/cvmfs/" >> /etc/cvmfs/default.local
     echo -e "CVMFS_HTTP_PROXY=DIRECT" >> /etc/cvmfs/default.local
