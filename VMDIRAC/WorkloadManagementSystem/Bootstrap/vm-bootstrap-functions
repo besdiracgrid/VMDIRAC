@@ -157,9 +157,6 @@ vm_dirac_install() {
   config_server=$6
   vo=$7
   
-  #add some missing packages
-  yum install -y libboost_python-mt*  
-
   mkdir -p /opt/dirac
   chmod ugo+rx /opt/dirac
   cd /opt/dirac
