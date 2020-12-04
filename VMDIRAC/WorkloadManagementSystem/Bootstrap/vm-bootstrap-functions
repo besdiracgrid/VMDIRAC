@@ -167,7 +167,7 @@ vm_dirac_install() {
 
   chmod +x dirac-install
   ./dirac-install -l $release_project -r $release_version -e VMDIRAC --dirac-os -ddd
-  ../bashrc
+  . ./bashrc
 
   mkdir -p /opt/dirac/etc/grid-security
   cp -f /root/hostkey.pem /opt/dirac/etc/grid-security/hostkey.pem
