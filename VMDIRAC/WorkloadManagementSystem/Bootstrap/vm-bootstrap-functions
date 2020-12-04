@@ -161,16 +161,12 @@ vm_dirac_install() {
   chmod ugo+rx /opt/dirac
   cd /opt/dirac
 
-  if [ -f $CONTEXTDIR/dirac-install.py ]; then
-    echo cp $CONTEXTDIR/dirac-install.py dirac-install
-    cp $CONTEXTDIR/dirac-install.py dirac-install
-  else
-    echo curl --insecure -s -L https://github.com/DIRACGrid/DIRAC/raw/integration/Core/scripts/dirac-install.py -o dirac-install
-    curl --insecure -s -L https://github.com/DIRACGrid/DIRAC/raw/integration/Core/scripts/dirac-install.py -o dirac-install
-  fi
+  echo curl --insecure -s -L https://github.com/DIRACGrid/DIRAC/raw/integration/Core/scripts/dirac-install.py -o dirac-install
+  curl --insecure -s -L https://github.com/DIRACGrid/DIRAC/raw/integration/Core/scripts/dirac-install.py -o dirac-install
+
 
   chmod +x dirac-install
-  ./dirac-install -l $release_project -r $release_version -e VMDIRAC -ddd
+  ./dirac-install -l $release_project -r $release_version -e VMDIRAC --dirac-os -ddd
   . ./bashrc
 
   mkdir -p /opt/dirac/etc/grid-security
