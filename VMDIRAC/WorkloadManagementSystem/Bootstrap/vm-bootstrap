@@ -77,6 +77,7 @@ vm_setup_http_proxy
 # install some tools and libraries
 sed -i 's/enabled=1/enabled=0/' /etc/yum.repos.d/epel.repo
 yum -y install libtool-ltdl iotop bind-utils sysstat procps iftop tcpdump
+yum install -y libboost_python-mt*
 
 # Create a shutdown_message if ACPI shutdown signal received
 cp -f $CONTEXTDIR/power.sh /etc/acpi/actions/power.sh
