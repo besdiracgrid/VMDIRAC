@@ -156,10 +156,14 @@ vm_dirac_install() {
   ce=$5
   config_server=$6
   vo=$7
+  
+  #add some missing packages
+  yum install -y libboost_python-mt*  
 
   mkdir -p /opt/dirac
   chmod ugo+rx /opt/dirac
   cd /opt/dirac
+  
 
   echo curl --insecure -s -L https://github.com/DIRACGrid/DIRAC/raw/integration/Core/scripts/dirac-install.py -o dirac-install
   curl --insecure -s -L https://github.com/DIRACGrid/DIRAC/raw/integration/Core/scripts/dirac-install.py -o dirac-install
@@ -172,7 +176,7 @@ vm_dirac_install() {
   mkdir -p /opt/dirac/etc/grid-security
   cp -f /root/hostkey.pem /opt/dirac/etc/grid-security/hostkey.pem
   cp -f /root/hostcert.pem /opt/dirac/etc/grid-security/hostcert.pem
-
+  
   dirac-configure -ddd -S $setup -C $config_server \
                   -o /DIRAC/Extensions=VMDIRAC \
                   -o /DIRAC/VirtualOrganization=$vo \
@@ -184,5 +188,6 @@ vm_dirac_install() {
                   --UseServerCertificate \
                   -o /DIRAC/Security/CertFile=/opt/dirac/etc/grid-security/hostcert.pem \
                   -o /DIRAC/Security/KeyFile=/opt/dirac/etc/grid-security/hostkey.pem
+
   cd $cwd
 }
