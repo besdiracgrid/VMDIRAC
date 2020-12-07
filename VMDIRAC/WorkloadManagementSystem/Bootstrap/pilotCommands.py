@@ -198,7 +198,8 @@ class InstallDIRAC( CommandBase ):
 
     # The release version to install is a requirement
     self.installOpts.append( '-r "%s"' % self.pp.releaseVersion )
-
+    self.installOpts.append( '--dirac-os' )
+    
     self.log.debug( 'INSTALL OPTIONS [%s]' % ', '.join( map( str, self.installOpts ) ) )
 
   def _locateInstallationScript( self ):
