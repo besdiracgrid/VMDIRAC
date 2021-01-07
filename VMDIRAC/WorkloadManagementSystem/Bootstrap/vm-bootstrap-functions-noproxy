@@ -164,7 +164,7 @@ vm_dirac_install() {
 
   mkdir -p /opt/dirac/etc/grid-security
   cp -f /root/hostkey.pem /opt/dirac/etc/grid-security/hostkey.pem
-  cp -f /root/hostcert.pem /opt/dirac/etc/grid-security/hostcert.pem
+  cp -f /root/hostkey.pem /opt/dirac/etc/grid-security/hostcert.pem
 
   dirac-configure -ddd -S $setup -C $config_server \
                   -o /DIRAC/Extensions=VMDIRAC \
