@@ -188,7 +188,6 @@ fi
 date --utc +"%Y-%m-%d %H:%M:%S %Z vm-bootstrap install DIRAC in /opt/dirac"
 vm_dirac_install $PROJECT $VERSION $SETUP $DIRAC_SITE $CE_NAME $CS_SERVERS $VO
 
-cp /root/hostkey.pem /opt/dirac/etc/grid-security/hostcert.pem
 ##############################################################################
 # Start the VM Monitoring Agent
 if [ -f $CONTEXTDIR/vm-monitor-agent ]; then
